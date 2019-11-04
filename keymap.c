@@ -8,7 +8,6 @@
 
 #include QMK_KEYBOARD_H
 
-#define IGNORE_MOD_TAP_INTERRUPT
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define NUMB 2 // numbers/motion
@@ -139,15 +138,4 @@ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                  
 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_1, KC_2, KC_3, KC_TRNS, KC_TRNS,
 
                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,               KC_TRNS, KC_TRNS, KC_0, KC_DOT)
-};
-
-// Runs just one time when the keyboard initializes.
-void matrix_init_user(void) {
-
-};
-
-// Runs constantly in the background, in a loop.
-void matrix_scan_user(void) {
-    //uint8_t layer = biton32(layer_state);
-    biton32(layer_state);
 };
