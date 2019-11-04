@@ -8,6 +8,8 @@ BALLSTEP = 20  			# Multiple in px to move, multiplied by layer number
 SCROLLSTEP = 1 			# Lines to scroll with ball
 MOUSEKEY_ENABLE = yes  		# Mouse keys(+4700), needed for baller
 
+DEBOUNCE = 8
+
 #Debug options
 VERBOSE 		 = yes
 DEBUG_MATRIX_SCAN_RATE   = no
