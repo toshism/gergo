@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_gergo(
 LT(NUMB, KC_TAB),  KC_Q,  KC_W,   KC_E,           KC_R,         KC_T,                                             KC_Y, KC_U,         KC_I,         KC_O,   KC_P,    KC_BSLS,
-LT(TEN, KC_BSPC),  KC_A,  KC_S,   LALT_T(KC_D),   LCTL_T(KC_F), KC_G, TT(TEN),                          KC_TRNS,  KC_H, RCTL_T(KC_J), LALT_T(KC_K), KC_L,   KC_SCLN, KC_QUOT,
+LT(TEN, KC_BSPC),  KC_A,  KC_S,   LALT_T(KC_D),   LCTL_T(KC_F), KC_G, TT(TEN),                          KC_TRNS,  KC_H, LCTL_T(KC_J), LALT_T(KC_K), KC_L,   KC_SCLN, KC_QUOT,
 KC_RSFT,           KC_Z,  KC_X,   KC_C,           KC_V,         KC_B, KC_BTN1, KC_TRNS,       KC_BSPC,  KC_BSPC,  KC_N, KC_M,         KC_COMM,      KC_DOT, KC_SLSH, KC_MINS,
 
           LCA(KC_QUOT), LT(SYMB, KC_BSPC), LT(NUMB, KC_ESC), LCTL(KC_T),                                             KC_TAB, LT(NUMB, KC_ENT), LT(SYMB, KC_SPC), KC_RSFT),
