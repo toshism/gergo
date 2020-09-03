@@ -9,6 +9,7 @@ SCROLLSTEP = 1 			# Lines to scroll with ball
 MOUSEKEY_ENABLE = yes  		# Mouse keys(+4700), needed for baller
 
 DEBOUNCE = 9
+LEADER_ENABLE = yes
 
 #Debug options
 VERBOSE 		 = yes

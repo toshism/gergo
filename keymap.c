@@ -17,8 +17,21 @@
 // Blank template at the bottom
 
 enum customKeycodes {
-	URL  = 1
+  CLOSE_FRAME = SAFE_RANGE
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+  case CLOSE_FRAME:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("x") "50");
+    }
+    break;
+  }
+  return true;
+};
+
+
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,11 +56,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------'                      `--------------'
  */
 [BASE] = LAYOUT_gergo(
-LT(NUMB, KC_TAB),  KC_Q,  KC_W,   KC_E,           KC_R,         KC_T,                                             KC_Y, KC_U,         KC_I,         KC_O,   KC_P,    KC_BSLS,
-LT(TEN, KC_BSPC),  KC_A,  KC_S,   LALT_T(KC_D),   LCTL_T(KC_F), KC_G, TT(TEN),                          KC_TRNS,  KC_H, LCTL_T(KC_J), LALT_T(KC_K), KC_L,   KC_SCLN, KC_QUOT,
-KC_RSFT,           KC_Z,  KC_X,   KC_C,           KC_V,         KC_B, KC_BTN1, KC_TRNS,       KC_BSPC,  KC_BSPC,  KC_N, KC_M,         KC_COMM,      KC_DOT, KC_SLSH, KC_MINS,
+KC_TAB,           KC_Q,  KC_W,   KC_E,           KC_R,         KC_T,                                             KC_Y, KC_U,         KC_I,         KC_O,   KC_P,    KC_BSLS,
+LT(TEN, KC_TAB),  KC_A,  KC_S,   LALT_T(KC_D),   LCTL_T(KC_F), KC_G, CLOSE_FRAME,                      KC_TRNS,  KC_H, LCTL_T(KC_J), LALT_T(KC_K), KC_L,   KC_SCLN, KC_QUOT,
+KC_RSFT,          KC_Z,  KC_X,   KC_C,           KC_V,         KC_B, KC_BTN1, KC_TRNS,       KC_BSPC,  KC_BSPC,  KC_N, KC_M,         KC_COMM,      KC_DOT, KC_SLSH, KC_MINS,
 
-          LCA(KC_QUOT), LT(SYMB, KC_BSPC), LT(NUMB, KC_ESC), LCTL(KC_T),                                             KC_TAB, LT(NUMB, KC_ENT), LT(SYMB, KC_SPC), KC_RSFT),
+LCA(KC_QUOT), LT(SYMB, KC_BSPC), LT(NUMB, KC_ESC), LCTL(KC_T),                                             KC_LEAD, LT(NUMB, KC_ENT), LT(SYMB, KC_SPC), KC_RSFT),
 /* Keymap 1: Symbols layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
@@ -139,3 +152,49 @@ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS
 
                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,               KC_TRNS, KC_TRNS, KC_0, KC_DOT)
 };
+
+
+LEADER_EXTERNS();
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+    // Replace the sequences below with your own sequences.
+    SEQ_ONE_KEY(KC_X) {
+      // When I press KC_LEAD and then T, this sends CTRL + SHIFT + T
+      SEND_STRING(SS_LALT("x"));
+    }
+    SEQ_ONE_KEY(KC_O) {
+      SEND_STRING(SS_LCTRL("x") "o");
+    }
+    SEQ_ONE_KEY(KC_K) {
+      SEND_STRING(SS_LCTRL("x") "50");
+    }
+    SEQ_ONE_KEY(KC_M) {
+      SEND_STRING(SS_LCTRL("x") "1");
+    }
+    SEQ_ONE_KEY(KC_COMM) {
+      SEND_STRING(SS_LCTRL("x") "o" SS_LCTRL("x") "1");
+    }
+    // Note: This is not an array, you don't need to put any commas
+    // or semicolons between sequences.
+  }
+}
+
+
+
+/* LEADER_EXTERNS(); */
+
+/* void matrix_scan_user(void) { */
+/*   LEADER_DICTIONARY() { */
+/*     leading = false; */
+/*     leader_end(); */
+/* _ */
+/*     SEQ_ONE_KEY(KC_X) { */
+/*   register_code(KC_LCTL); */
+/*   register_code(KC_X); */
+/*   unregister_code(KC_X); */
+/*   unregister_code(KC_LCTL); */
+/*     } */
+/*   } */
+/* }; */
