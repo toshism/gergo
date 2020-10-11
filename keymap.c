@@ -38,22 +38,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
- * | L1/ESC |   Q  |   W  |   E  |   R  |   T  |                         |   Y  |   U  |   I  |   O  |   P  |  \ |   |
+ * |  TAB   |   Q  |   W  |   E  |   R  |   T  |                         |   Y  |   U  |   I  |   O  |   P  |  \ |   |
  * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
  * | TEN/BS |   A  |   S  |ALT/D |CTL/F |   G  | RMB  |           |      |   H  |CTL/J |ALT/K |   L  | ;  : |  ' "   |
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | LMB  |           |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *                    .----------.   .----------.                                 .----------.   .------.
- *                    |CTRL/ALT/'|   |SYMB/Space|                                 |SYMB/Space|   |SHIFT |
- *                    '----------'   '----------'                                 `----------.   '------'
- *                                        ,-------.                      ,-------.
- *                                        |       |                      |       |
- *                                 ,------|-------|                      |-------|------.
- *                                 | NUMB |       |                      | WIN/  | NUMB |
- *                                 | ESC  |  C-t  |                      | TAB   |Enter |
- *                                 |      |       |                      |       |      |
- *                                 `--------------'                      `--------------'
+ *  .----------. .-----------. .----------. .---------.           .----------. .----------. .----------. .----------.
+ *  |CTRL-ALT-'| |SYMB/BSpace| | NUMB/ESC | |  C-t    |           | LEADER   | |NUMB/Enter| |SYMB/Space| |   Shift  |
+ *  '----------' '-----------' '----------' '---------'           '----------' '----------' '----------' '----------'
  */
 [BASE] = LAYOUT_gergo(
 KC_TAB,           KC_Q,  KC_W,   KC_E,           KC_R,         KC_T,                                             KC_Y, KC_U,         KC_I,         KC_O,   KC_P,    KC_BSLS,
@@ -64,7 +57,7 @@ LCA(KC_QUOT), LT(SYMB, KC_BSPC), LT(NUMB, KC_ESC), LCTL(KC_T),                  
 /* Keymap 1: Symbols layer
  *
  * ,-------------------------------------------.                         ,-------------------------------------------.
- * |        |  !   |  @   |  {   |  }   |  |   |                         |      |  M1  |  M2  |  M3  |  M4  |  M5    |
+ * |        |  !   |  @   |  {   |  }   |  |   |                         |  M6  |  M1  |  M2  |  M3  |  M4  |  M5    |
  * |--------+------+------+------+------+------|------.           .------|------+------+------+------+------+--------|
  * |        |  #   |  $   |  (   |  )   |  `   |      |           |      |   +  |  -   |  /   |  *   |  %   |  _     |
  * |--------+------+------+------+------+------|------|           |------|------+------+------+------+------+--------|
@@ -82,9 +75,9 @@ LCA(KC_QUOT), LT(SYMB, KC_BSPC), LT(NUMB, KC_ESC), LCTL(KC_T),                  
  *                                 `--------------'                     `--------------'
  */
 [SYMB] = LAYOUT_gergo(
-KC_TRNS, KC_EXLM, KC_AT,  KC_LCBR,KC_RCBR, KC_PIPE,                                           KC_TRNS, LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), LALT(KC_5),
-KC_TRNS, KC_HASH, KC_DLR, KC_LPRN,KC_RPRN, KC_GRV,  KC_TRNS,                         KC_TRNS, KC_PLUS, KC_MINS,    KC_SLSH,    KC_ASTR,    KC_PERC,    KC_UNDS,
-KC_TRNS, KC_PERC, KC_CIRC,KC_LBRC,KC_RBRC, KC_TILD, KC_TRNS, KC_TRNS,       KC_TRNS, KC_TRNS, KC_AMPR, KC_EQL,     KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
+KC_TRNS, KC_EXLM, KC_AT,  KC_LCBR,KC_RCBR, KC_PIPE,                                           LALT(KC_6), LALT(KC_1), LALT(KC_2), LALT(KC_3), LALT(KC_4), LALT(KC_5),
+KC_TRNS, KC_HASH, KC_DLR, KC_LPRN,KC_RPRN, KC_GRV,  KC_TRNS,                         KC_TRNS, KC_PLUS,    KC_MINS,    KC_SLSH,    KC_ASTR,    KC_PERC,    KC_UNDS,
+KC_TRNS, KC_PERC, KC_CIRC,KC_LBRC,KC_RBRC, KC_TILD, KC_TRNS, KC_TRNS,       KC_TRNS, KC_TRNS, KC_AMPR,    KC_EQL,     KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
 
                                    KC_TRNS, KC_TRNS, KC_SCLN, KC_EQL,       KC_EQL, KC_SCLN, KC_PGUP, KC_DEL),
 /* Keymap 2: Pad/Function layer
